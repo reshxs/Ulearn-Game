@@ -1,0 +1,13 @@
+C:\Users\exeha\source\repos\Game\Game\bin\Debug\Game.exe.config
+C:\Users\exeha\source\repos\Game\Game\bin\Debug\Game.exe
+C:\Users\exeha\source\repos\Game\Game\bin\Debug\Game.pdb
+C:\Users\exeha\source\repos\Game\Game\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\exeha\source\repos\Game\Game\obj\Debug\Game.Properties.Resources.resources
+C:\Users\exeha\source\repos\Game\Game\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\exeha\source\repos\Game\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\exeha\source\repos\Game\Game\obj\Debug\Game.exe
+C:\Users\exeha\source\repos\Game\Game\obj\Debug\Game.pdb
+C:\Users\exeha\source\repos\Game\Game\bin\Debug\nunit.framework.dll
+C:\Users\exeha\source\repos\Game\Game\bin\Debug\nunit.framework.pdb
+C:\Users\exeha\source\repos\Game\Game\bin\Debug\nunit.framework.xml
+C:\Users\exeha\source\repos\Game\Game\obj\Debug\Game.csproj.CopyComplete

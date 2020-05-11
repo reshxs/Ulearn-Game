@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="937b9d40-9b94-4153-ab30-a4fddfeb592e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Game/GameForm.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/GameBonus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/BonusType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/MoveDirections.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/ModelEventHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/ModelEventArgs.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/Barrier.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/Drawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/Rocket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/GameModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/Program.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Game/Game.cs" />
+        <option value="$PROJECT_DIR$/Game/MapCell.cs" />
+        <option value="$PROJECT_DIR$/Game/Map.cs" />
+        <option value="$PROJECT_DIR$/Game/Resources.Designer.cs" />
+        <option value="$PROJECT_DIR$/Game/KeyPressed.cs" />
+        <option value="$PROJECT_DIR$/Game/MoveDirections.cs" />
+        <option value="$PROJECT_DIR$/Game/BonusTypes.cs" />
+        <option value="$PROJECT_DIR$/Game/Bonus.cs" />
+        <option value="$PROJECT_DIR$/Game/BonusInfo.cs" />
+        <option value="$PROJECT_DIR$/Game/ModelEventHandler.cs" />
+        <option value="$PROJECT_DIR$/Game/GameModel_should.cs" />
+        <option value="$PROJECT_DIR$/Game/ModelEventArgs.cs" />
+        <option value="$PROJECT_DIR$/Game/Player_should.cs" />
+        <option value="$PROJECT_DIR$/Game/Program.cs" />
+        <option value="$PROJECT_DIR$/Game/GameObject.cs" />
+        <option value="$PROJECT_DIR$/Game/Player.cs" />
+        <option value="$PROJECT_DIR$/Game/IGameObject.cs" />
+        <option value="$PROJECT_DIR$/Game/GameBonus.cs" />
+        <option value="$PROJECT_DIR$/Game/Barrier_should.cs" />
+        <option value="$PROJECT_DIR$/Game/Rocket.cs" />
+        <option value="$PROJECT_DIR$/Game/Barrier.cs" />
+        <option value="$PROJECT_DIR$/Game/BonusType.cs" />
+        <option value="$PROJECT_DIR$/Game/GameModel.cs" />
+        <option value="$PROJECT_DIR$/Game/Drawer.cs" />
+        <option value="$PROJECT_DIR$/Game/GameForm.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bGadn7GZpi3nbciaDVU0Vvq8p8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.SolutionExplorerActivator" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Game" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Game/Game.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="937b9d40-9b94-4153-ab30-a4fddfeb592e" name="Default Changelist" comment="" />
+      <created>1588260974916</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588260974916</updated>
+      <workItem from="1588260978739" duration="53147000" />
+      <workItem from="1588411137278" duration="12248000" />
+      <workItem from="1588429613987" duration="1988000" />
+      <workItem from="1588431895660" duration="7689000" />
+      <workItem from="1588495272682" duration="1600000" />
+      <workItem from="1588509253139" duration="179000" />
+      <workItem from="1588517300969" duration="990000" />
+      <workItem from="1588523054482" duration="197000" />
+      <workItem from="1588760663220" duration="25410000" />
+      <workItem from="1588942540155" duration="38768000" />
+      <workItem from="1589033937780" duration="20300000" />
+      <workItem from="1589141921443" duration="1138000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1877" height="321" key="GridCell.Tab.0.bottom" timestamp="1589186105072">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1877" height="321" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1589186105072" />
+    <state width="1877" height="321" key="GridCell.Tab.0.center" timestamp="1589186105072">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1877" height="321" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1589186105072" />
+    <state width="1877" height="321" key="GridCell.Tab.0.left" timestamp="1589186105072">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1877" height="321" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1589186105072" />
+    <state width="1877" height="321" key="GridCell.Tab.0.right" timestamp="1589186105072">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1877" height="321" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1589186105072" />
+    <state x="788" y="254" key="RiderGenerateDialog" timestamp="1589033953189">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="788" y="254" key="RiderGenerateDialog/0.0.1920.1160@0.0.1920.1160" timestamp="1589033953189" />
+    <state x="461" y="225" key="SettingsEditor" timestamp="1588411507770">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="461" y="225" key="SettingsEditor/0.0.1920.1160@0.0.1920.1160" timestamp="1588411507770" />
+    <state x="953" y="0" width="974" height="1167" key="dock-window-1" timestamp="1588972271654">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="953" y="0" width="974" height="1167" key="dock-window-1/0.0.1920.1160@0.0.1920.1160" timestamp="1588972271654" />
+    <state x="953" y="0" width="974" height="1167" key="dock-window-2" timestamp="1588332736608">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="953" y="0" width="974" height="1167" key="dock-window-2/0.0.1920.1160@0.0.1920.1160" timestamp="1588332736608" />
+    <state x="953" y="0" width="974" height="1167" key="dock-window-3" timestamp="1588333119800">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="953" y="0" width="974" height="1167" key="dock-window-3/0.0.1920.1160@0.0.1920.1160" timestamp="1588333119800" />
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1588778040140">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/0.0.1920.1160@0.0.1920.1160" timestamp="1588778040140" />
+  </component>
+</project>
