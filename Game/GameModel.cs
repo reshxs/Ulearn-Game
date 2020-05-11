@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace Game
 {
@@ -11,6 +12,8 @@ namespace Game
         public readonly Barrier[] Barriers = new Barrier[BarriersCount];
         public GameBonus Bonus { get; private set; }
         public Rocket Rocket { get; private set; }
+        public Bullet Bullet { get; private set; }
+        public int BulletsCount { get; private set; }
         public int Score { get; private set; }
         private ulong _prevTime;
         private readonly Random _random = new Random();
@@ -23,11 +26,12 @@ namespace Game
         public GameModel(bool godMode = false)
         {
             _godMode = godMode;
+            BulletsCount = 1;
             CreateBarriers(BarriersCount);
             _prevTime = 0;
         }
 
-        public bool NextTick(MoveDirections currentDirection, ulong time)
+        public bool NextTick(MoveDirections currentDirection, ulong time, bool bulletFlag)
         {
             if (time != _prevTime)
             {
@@ -39,6 +43,8 @@ namespace Game
                 OnNewTick(new ModelEventArgs());
             }
             
+            CreateBullet(bulletFlag);
+            MoveBullet();
             MoveBonus();
             MoveRocket();
             MoveBarriers();
@@ -108,9 +114,14 @@ namespace Game
         {
             foreach (var barrier in Barriers)
             {
-                if (!barrier.CollidePlayer(Player)) continue;
-                Player.KickPlayer();
-                OnCollideBarrier(new ModelEventArgs());
+                if (barrier.CollidePlayer(Player))
+                {
+                    Player.KickPlayer();
+                    OnCollideBarrier(new ModelEventArgs());
+                }
+
+                if (Bullet != null && barrier.CollideBullet(Bullet))
+                    Bullet = null;
             }
         }
 
@@ -160,6 +171,9 @@ namespace Game
                 case BonusType.SpeedUp:
                     Player.UpSpeed();
                     break;
+                case BonusType.ExtraBullet:
+                    BulletsCount++;
+                    break;
                 case BonusType.None:
                     break;
                 default:
@@ -192,6 +206,27 @@ namespace Game
             Player.KickPlayer();
             Rocket = null;
             OnCollideRocket(new ModelEventArgs());
+        }
+
+        #endregion
+        
+        #region Bullet
+
+        private void CreateBullet(bool flag)
+        {
+            if (!flag || BulletsCount <= 0) 
+                return;
+            Bullet = new Bullet(Player.X, Player.Y);
+            BulletsCount--;
+        }
+
+        private void MoveBullet()
+        {
+            if (Bullet == null)
+                return;
+            Bullet.Move();
+            if (Bullet.Y + Bullet.Height <= 0)
+                Bullet = null;
         }
 
         #endregion

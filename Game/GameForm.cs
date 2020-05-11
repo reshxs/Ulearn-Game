@@ -11,6 +11,7 @@ namespace Game
         private ulong _time;
         private bool _isPaused;
         private MoveDirections _currentDirection = MoveDirections.None;
+        private bool _xPressed;
 
         public GameForm()
         {
@@ -42,7 +43,7 @@ namespace Game
         {
             _animationTimer.Tick += (sender, args) =>
             {
-                var result = _model.NextTick(_currentDirection, _time);
+                var result = _model.NextTick(_currentDirection, _time, _xPressed);
                 if (!result)
                     Lose();
             };
@@ -64,6 +65,16 @@ namespace Game
                     PauseGame();
                     BackColor = Color.DimGray;
                 }
+            };
+            KeyDown += (sender, args) =>
+            {
+                if (args.KeyData == Keys.X)
+                    _xPressed = true;
+            };
+            KeyUp +=(sender, args) =>
+            {
+                if (args.KeyData == Keys.X)
+                    _xPressed = false;
             };
             KeyDown += (sender, args) => { _currentDirection = ChooseDirection(args); };
             KeyUp += (sender, args) =>

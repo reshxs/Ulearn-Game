@@ -11,10 +11,18 @@ namespace Game
             args.Graphics.SmoothingMode = SmoothingMode.HighSpeed;
             DrawRocket(args, model);
             DrawBarriers(args, model);
+            DrawBullet(args, model.Bullet);
             DrawPlayer(args, model.Player);
             DrawBonus(args, model.Bonus);
             DrawScore(args, model.Score.ToString(), 5, 10);
             DrawScore(args, model.Player.Hp.ToString(), 600, 10);
+            DrawScore(args, model.BulletsCount.ToString(), 400, 10);
+        }
+
+        private static void DrawBullet(PaintEventArgs args, Bullet bullet)
+        {
+            if (bullet != null)
+                DrawGameObject(args, Brushes.Brown, new Pen(Color.Red, 3f), bullet.X, bullet.Y, Bullet.Width, Bullet.Height);
         }
 
         private static void DrawBarriers(PaintEventArgs args, GameModel model)

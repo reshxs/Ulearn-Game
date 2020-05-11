@@ -6,6 +6,7 @@
         ExtraLive,
         ExtraScore,
         SpeedUp,
+        ExtraBullet,
         None,
         Count
     }

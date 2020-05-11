@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Barrier.cs" />
+    <Compile Include="Bullet.cs" />
     <Compile Include="GameBonus.cs" />
     <Compile Include="BonusType.cs" />
     <Compile Include="Drawer.cs" />

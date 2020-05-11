@@ -54,6 +54,13 @@ namespace Game
             || ContainsPoint(player.X + Player.Width, player.Y)
             || ContainsPoint(player.X, player.Y + Player.Height)
             || ContainsPoint(player.X + Player.Width, player.Y + Player.Height);
+        
+        public bool CollideBullet(Bullet bullet) =>
+            ContainsPoint(bullet.X, bullet.Y)
+            || ContainsPoint(bullet.X + Player.Width, bullet.Y)
+            || ContainsPoint(bullet.X, bullet.Y + Player.Height)
+            || ContainsPoint(bullet.X + Player.Width, bullet.Y + Player.Height);
+        
 
         public static void CalculateSpeed(ulong time)
         {
