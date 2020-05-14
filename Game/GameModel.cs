@@ -50,7 +50,7 @@ namespace Game
             MoveBarriers();
             MovePlayer(currentDirection);
 
-            return _godMode || Player.IsDead();
+            return _godMode || Player.IsAlive();
         }
 
         private static void CalculateSpeed(ulong time)
@@ -214,7 +214,7 @@ namespace Game
 
         private void CreateBullet(bool flag)
         {
-            if (!flag || BulletsCount <= 0) 
+            if (!flag || BulletsCount <= 0 || Bullet != null) 
                 return;
             Bullet = new Bullet(Player.X, Player.Y);
             BulletsCount--;

@@ -23,7 +23,7 @@ namespace Game
         
         public void HealPlayer() => Hp++;
 
-        public bool IsDead() => Hp > 0;
+        public bool IsAlive() => Hp > 0;
 
         public void Move(MoveDirections direction)
         {
