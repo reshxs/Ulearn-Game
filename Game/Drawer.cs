@@ -13,10 +13,19 @@ namespace Game
             DrawBarriers(args, model);
             DrawBullet(args, model.Bullet);
             DrawPlayer(args, model.Player);
-            DrawBonus(args, model.Bonus);
-            DrawScore(args, model.Score.ToString(), 5, 10);
-            DrawScore(args, model.Player.Hp.ToString(), 600, 10);
-            DrawScore(args, model.BulletsCount.ToString(), 400, 10);
+            DrawEnemy(args, model.Enemy);
+            DrawBonus(args, model.Bonus, Brushes.SaddleBrown, new Pen(Color.Gold, 3f));
+            DrawBonus(args, model.AmmoBox, Brushes.DarkSlateGray, new Pen(Color.Azure, 3f));
+            DrawScore(args, $"Score: {model.Score.ToString()}", 5, GameModel.Height - 75);
+            DrawScore(args, $"HP: {model.Player.Hp.ToString()}", 600, GameModel.Height - 75);
+            DrawScore(args, $"Ammo: {model.Ammo.ToString()}", 400, GameModel.Height - 75);
+        }
+
+        private static void DrawEnemy(PaintEventArgs args, Enemy enemy)
+        {
+            if (enemy != null)
+                DrawGameObject(args, Brushes.Indigo, new Pen(Color.Azure, 3f), enemy.X, enemy.Y, Enemy.Width,
+                    Enemy.Height);
         }
 
         private static void DrawBullet(PaintEventArgs args, Bullet bullet)
@@ -48,11 +57,11 @@ namespace Game
             }
         }
 
-        private static void DrawBonus(PaintEventArgs args, GameBonus bonus)
+        private static void DrawBonus(PaintEventArgs args, GameBonus bonus, Brush brush, Pen pen)
         {
             if (bonus != null)
             {
-                DrawGameObject(args, Brushes.SaddleBrown, new Pen(Color.Gold, 3f), bonus.X, bonus.Y,
+                DrawGameObject(args, brush, pen, bonus.X, bonus.Y,
                     GameBonus.Width, GameBonus.Height);
             }
         }
@@ -69,6 +78,6 @@ namespace Game
         }
         
         private static void DrawScore(PaintEventArgs args, string str, int x, int y) => 
-            args.Graphics.DrawString(str, new Font("Consolas", 40), Brushes.Azure, x,y);
+            args.Graphics.DrawString(str, new Font("Consolas", 20), Brushes.Azure, x,y);
     }
 }

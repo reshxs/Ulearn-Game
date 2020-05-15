@@ -12,6 +12,8 @@
         <e p="BonusType.cs" t="Include" />
         <e p="Bullet.cs" t="Include" />
         <e p="Drawer.cs" t="Include" />
+        <e p="Enemy.cs" t="Include" />
+        <e p="EnemyTests.cs" t="Include" />
         <e p="Game.csproj" t="IncludeRecursive" />
         <e p="GameBonus.cs" t="Include" />
         <e p="GameBonusTests.cs" t="Include" />

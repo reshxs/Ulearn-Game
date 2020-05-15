@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Net;
+using System.Windows.Forms;
 
 namespace Game
 {
-    public sealed class GameModel
+    public class GameModel
     {
         public const int Width = 750;
         public const int Height = 1000;
@@ -11,46 +11,59 @@ namespace Game
         public readonly Player Player = new Player(Width/2, Height - 100);
         public readonly Barrier[] Barriers = new Barrier[BarriersCount];
         public GameBonus Bonus { get; private set; }
+        public GameBonus AmmoBox { get; private set; }
         public Rocket Rocket { get; private set; }
         public Bullet Bullet { get; private set; }
-        public int BulletsCount { get; private set; }
+        public int Ammo { get; private set; }
         public int Score { get; private set; }
+        public Enemy Enemy { get; private set; }
         private ulong _prevTime;
         private readonly Random _random = new Random();
         public event ModelEventHandler NewTick;
         public event ModelEventHandler CollideBarrier;
         public event ModelEventHandler CollideBonus;
         public event ModelEventHandler CollideRocket;
-        private readonly bool _godMode;
 
-        public GameModel(bool godMode = false)
+        public GameModel()
         {
-            _godMode = godMode;
-            BulletsCount = 1;
             CreateBarriers(BarriersCount);
+            Ammo = 5;
             _prevTime = 0;
         }
 
+        #region mainActions
+
         public bool NextTick(MoveDirections currentDirection, ulong time, bool bulletFlag)
         {
-            if (time != _prevTime)
-            {
-                _prevTime = time;
-                Score++;
-                CalculateSpeed(time);
-                CreateBonus(time);
-                CreateRocket(time);
-                OnNewTick(new ModelEventArgs());
-            }
-            
+            NextTimeTick(time);
             CreateBullet(bulletFlag);
+            MoveObjects(currentDirection);
+            return Player.IsAlive();
+        }
+
+        private void MoveObjects(MoveDirections currentDirection)
+        {
             MoveBullet();
             MoveBonus();
             MoveRocket();
             MoveBarriers();
+            MoveAmmoBox();
             MovePlayer(currentDirection);
+            MoveEnemy(currentDirection);
+        }
 
-            return _godMode || Player.IsAlive();
+        private void NextTimeTick(ulong time)
+        {
+            if (time == _prevTime) 
+                return;
+            _prevTime = time;
+            Score++;
+            CalculateSpeed(time);
+            CreateBonus(time);
+            CreateAmmoBox(time);
+            CreateRocket(time);
+            CreateEnemy(time);
+            OnNewTick(new ModelEventArgs());
         }
 
         private static void CalculateSpeed(ulong time)
@@ -62,13 +75,10 @@ namespace Game
 
         private void MovePlayer(MoveDirections direction)
         {
-            if(!_godMode)
-            {
-                CheckBarriersCollisions();
-                CheckRocketCollision();
-            }
-
+            CheckBarriersCollisions();
+            CheckRocketCollision();
             CheckBonusCollision();
+            CheckAmmoBoxCollision();
             if ((Player.X - Player.Speed < 0 && direction == MoveDirections.Left)
                 || (Player.X + Player.Speed >= Width - Player.Width && direction == MoveDirections.Right)
                 || (Player.Y - Player.Speed < 0 && direction == MoveDirections.Up)
@@ -76,11 +86,13 @@ namespace Game
                 return;
             Player.Move(direction);
         }
+        
+        #endregion
 
         #region Barrier
 
         private void CreateBarriers(int barriersCount)
-        {
+        {             
             var y = Height - 300;
             for (var i = 0; i < barriersCount; i++)
             {
@@ -172,7 +184,7 @@ namespace Game
                     Player.UpSpeed();
                     break;
                 case BonusType.ExtraBullet:
-                    BulletsCount++;
+                    Ammo++;
                     break;
                 case BonusType.None:
                     break;
@@ -214,10 +226,10 @@ namespace Game
 
         private void CreateBullet(bool flag)
         {
-            if (!flag || BulletsCount <= 0 || Bullet != null) 
+            if (!flag || Ammo <= 0 || Bullet != null) 
                 return;
-            Bullet = new Bullet(Player.X, Player.Y);
-            BulletsCount--;
+            Bullet = new Bullet(Player.X + Player.Width / 2 - Bullet.Width / 2, Player.Y);
+            Ammo--;
         }
 
         private void MoveBullet()
@@ -241,6 +253,79 @@ namespace Game
 
         private void OnCollideRocket(ModelEventArgs args) => CollideRocket?.Invoke(this, args);
         
+        #endregion
+        
+        #region AmmoBox
+
+        private void CreateAmmoBox(ulong time)
+        {
+            if (time % 20 != 0) return;
+            AmmoBox = new GameBonus(BonusType.None, 
+                _random.Next(Width - GameBonus.Width),- GameBonus.Height);
+        }
+
+        private void CheckAmmoBoxCollision()
+        {
+            if (AmmoBox == null || !AmmoBox.CollidePlayer(Player))
+                return;
+            Ammo += 5;
+            AmmoBox = null;
+            OnCollideBonus(new ModelEventArgs());
+        }
+
+        private void MoveAmmoBox()
+        {
+            if (AmmoBox == null)
+                return;
+            AmmoBox.Move();
+            if (AmmoBox.Y >= Height)
+                AmmoBox = null;
+        }
+
+        #endregion
+
+        #region Enemy
+
+        private void CreateEnemy(ulong time)
+        {
+            if (time % 15 != 0)
+                return;
+            Enemy = new Enemy(Player.X, -Enemy.Height);
+        }
+
+        private void MoveEnemy(MoveDirections direction)
+        {
+            CheckEnemyCollision();
+            if (Enemy == null 
+                || Enemy.X - Enemy.Speed < 0 && direction == MoveDirections.Left 
+                || Enemy.X + Enemy.Speed > Width - Enemy.Height && direction == MoveDirections.Right)
+                return;
+            Enemy.Move(Player);
+            if (Enemy.Y <= Height) return;
+            Player.KickPlayer();
+            Enemy = null;
+            OnCollideBarrier(new ModelEventArgs());
+        }
+
+
+
+        private void CheckEnemyCollision()
+        {
+            if (Enemy != null && Enemy.CollidePlayer(Player))
+            {
+                Player.KickPlayer();
+                Enemy = null;
+                OnCollideBarrier(new ModelEventArgs());
+            }
+
+            if (Enemy == null || Bullet == null || !Enemy.CollideBullet(Bullet)) 
+                return;
+            Enemy.KickEnemy();
+            Bullet = null;
+            if (!Enemy.IsAlive())
+                Enemy = null;
+        }
+
         #endregion
     }
 } 
