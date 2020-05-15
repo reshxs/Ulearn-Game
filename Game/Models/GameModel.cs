@@ -30,6 +30,18 @@ namespace Game
             Ammo = 5;
             _prevTime = 0;
         }
+        
+        #region Events
+        
+        private void OnCollideBarrier(ModelEventArgs args) => CollideBarrier?.Invoke(this, args);
+
+        private void OnNewTick(ModelEventArgs args) => NewTick?.Invoke(this, args);
+
+        private void OnCollideBonus(ModelEventArgs args) => CollideBonus?.Invoke(this, args);
+
+        private void OnCollideRocket(ModelEventArgs args) => CollideRocket?.Invoke(this, args);
+        
+        #endregion
 
         #region mainActions
 
@@ -243,18 +255,6 @@ namespace Game
 
         #endregion
 
-        #region Events
-        
-        private void OnCollideBarrier(ModelEventArgs args) => CollideBarrier?.Invoke(this, args);
-
-        private void OnNewTick(ModelEventArgs args) => NewTick?.Invoke(this, args);
-
-        private void OnCollideBonus(ModelEventArgs args) => CollideBonus?.Invoke(this, args);
-
-        private void OnCollideRocket(ModelEventArgs args) => CollideRocket?.Invoke(this, args);
-        
-        #endregion
-        
         #region AmmoBox
 
         private void CreateAmmoBox(ulong time)
@@ -306,9 +306,7 @@ namespace Game
             Enemy = null;
             OnCollideBarrier(new ModelEventArgs());
         }
-
-
-
+        
         private void CheckEnemyCollision()
         {
             if (Enemy != null && Enemy.CollidePlayer(Player))
