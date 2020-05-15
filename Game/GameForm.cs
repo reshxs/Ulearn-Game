@@ -1,5 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Game.Enums;
+using Game.Models;
 
 namespace Game
 {

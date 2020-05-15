@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Dynamic;
-using System.Security.Permissions;
-using NUnit.Framework;
 
-namespace Game
+namespace Game.Models
 {
     public class Barrier
     {

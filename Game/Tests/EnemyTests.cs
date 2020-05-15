@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using Game.Models;
+using NUnit.Framework;
 
-namespace Game
+namespace Game.Tests
 {
     [TestFixture]
     public class EnemyTests

@@ -1,4 +1,4 @@
-﻿namespace Game
+﻿namespace Game.Models
 {
     public class Bullet
     {

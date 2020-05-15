@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
+﻿using Game.Enums;
 
-namespace Game
+namespace Game.Models
 {
     public class GameBonus
     {

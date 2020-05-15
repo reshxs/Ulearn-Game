@@ -1,6 +1,8 @@
-﻿using NUnit.Framework;
+﻿using Game.Enums;
+using Game.Models;
+using NUnit.Framework;
 
-namespace Game
+namespace Game.Tests
 {
     [TestFixture]
     public class GameBonusTests

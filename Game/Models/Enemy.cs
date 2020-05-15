@@ -1,8 +1,6 @@
-﻿using System;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows.Forms;
+﻿using Game.Enums;
 
-namespace Game
+namespace Game.Models
 {
     public class Enemy
     {

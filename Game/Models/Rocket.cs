@@ -1,7 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using System.Windows.Forms;
-
-namespace Game
+﻿namespace Game.Models
 {
     public class Rocket
     {

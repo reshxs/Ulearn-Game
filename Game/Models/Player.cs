@@ -1,6 +1,7 @@
 ﻿using System;
+using Game.Enums;
 
-namespace Game
+namespace Game.Models
 {
     public class Player
     {

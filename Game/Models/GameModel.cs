@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Windows.Forms;
+using Game.Enums;
+using Game.ModelEvents;
 
-namespace Game
+namespace Game.Models
 {
     public class GameModel
     {
