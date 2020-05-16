@@ -15,8 +15,8 @@ namespace Game
             DrawBullet(args, model.Bullet);
             DrawPlayer(args, model.Player);
             DrawEnemy(args, model.Enemy);
-            DrawBonus(args, model.Bonus, Brushes.SaddleBrown, new Pen(Color.Gold, 3f));
-            DrawBonus(args, model.AmmoBox, Brushes.DarkSlateGray, new Pen(Color.Azure, 3f));
+            DrawBonus(args, model.Bonus, Brushes.SaddleBrown, new Pen(Color.Gold, 3f), "?");
+            DrawBonus(args, model.AmmoBox, Brushes.DarkSlateGray, new Pen(Color.Azure, 3f), "A");
             DrawScore(args, $"Score: {model.Score.ToString()}", 5, GameModel.Height - 75);
             DrawScore(args, $"HP: {model.Player.Hp.ToString()}", 600, GameModel.Height - 75);
             DrawScore(args, $"Ammo: {model.Ammo.ToString()}", 400, GameModel.Height - 75);
@@ -58,13 +58,17 @@ namespace Game
             }
         }
 
-        private static void DrawBonus(PaintEventArgs args, GameBonus bonus, Brush brush, Pen pen)
+        private static void DrawBonus(PaintEventArgs args, GameBonus bonus, Brush brush, Pen pen, string text)
         {
-            if (bonus != null)
-            {
-                DrawGameObject(args, brush, pen, bonus.X, bonus.Y,
-                    GameBonus.Width, GameBonus.Height);
-            }
+            if (bonus == null) return;
+            DrawGameObject(args, brush, pen, bonus.X, bonus.Y,
+                GameBonus.Width, GameBonus.Height);
+            args.Graphics.DrawString(text, 
+                new Font("Consolas", 17), 
+                Brushes.Azure, 
+                new RectangleF(bonus.X, bonus.Y, GameBonus.Width, GameBonus.Height),
+                new StringFormat{ Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center, 
+                });
         }
 
         private static void DrawPlayer(PaintEventArgs args, Player player) =>

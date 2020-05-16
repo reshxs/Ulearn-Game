@@ -11,12 +11,13 @@ namespace Game.Tests
         [TestCase(0,0,Enemy.Width + 1,0, false)]
         [TestCase(0,0,0,Enemy.Height + 1, false)]
         [TestCase(0,0,Enemy.Width,Enemy.Height, true)]
-        public static void CollisionTest(int enemyX, int enemyY, int playerX, int playerY, bool expected)
+        public static void CollisionTest(int enemyX, int enemyY, int objX, int objY, bool expected)
         {
             var enemy = new Enemy(enemyX, enemyY);
-            var player = new Player(playerX, playerY);
-            var actual = enemy.CollidePlayer(player);
-            Assert.AreEqual(expected, actual);
+            var player = new Player(objX, objY);
+            var bullet = new Bullet(objX, objY);
+            Assert.AreEqual(expected, enemy.CollidePlayer(player));
+            Assert.AreEqual(expected, enemy.CollideBullet(bullet));
         }
 
         [Test]

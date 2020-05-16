@@ -33,11 +33,11 @@ namespace Game
         private void SetFormProperties()
         {
             Size = new Size(GameModel.Width, GameModel.Height);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             BackColor = Color.MidnightBlue;
-            Location = new Point(50,50);
+            Location = new Point(0,0);
             DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Text = @"ASS BURNER";
         }
 
