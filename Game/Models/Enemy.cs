@@ -42,6 +42,12 @@ namespace Game.Models
                     break;
             }
         }
+        
+        private void Move(int dx)
+        {
+            X += dx;
+            Y += Speed;
+        }
 
         public void KickEnemy() => _hp--;
 
@@ -66,11 +72,5 @@ namespace Game.Models
             player.X > X
                 ? MoveDirections.Right
                 : ((player.X == X) ? MoveDirections.None : MoveDirections.Left);
-
-        private void Move(int dx)
-        {
-            X += dx;
-            Y += Speed;
-        }
     }
 }

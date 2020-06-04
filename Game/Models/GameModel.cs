@@ -145,6 +145,11 @@ namespace Game.Models
                     OnCollideBarrier(new ModelEventArgs());
                 }
 
+                if (Enemy != null && barrier.CollideEnemy(Enemy))
+                {
+                    OnCollideBonus(new ModelEventArgs());
+                }
+
                 if (Bullet != null && barrier.CollideBullet(Bullet))
                     Bullet = null;
             }

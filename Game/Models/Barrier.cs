@@ -58,6 +58,12 @@ namespace Game.Models
             || ContainsPoint(bullet.X, bullet.Y + Player.Height)
             || ContainsPoint(bullet.X + Player.Width, bullet.Y + Player.Height);
         
+        public bool CollideEnemy(Enemy enemy) =>
+            ContainsPoint(enemy.X, enemy.Y)
+            || ContainsPoint(enemy.X + Player.Width, enemy.Y)
+            || ContainsPoint(enemy.X, enemy.Y + Player.Height)
+            || ContainsPoint(enemy.X + Player.Width, enemy.Y + Player.Height);
+        
 
         public static void CalculateSpeed(ulong time)
         {
