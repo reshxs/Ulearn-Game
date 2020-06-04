@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Game.Enums;
 using Game.Models;
@@ -13,6 +15,7 @@ namespace Game
         private ulong _time;
         private bool _isPaused;
         private MoveDirections _currentDirection = MoveDirections.None;
+        private HashSet<Keys> _currentKeys = new HashSet<Keys>();
         private bool _xPressed;
 
         public GameForm()
@@ -45,7 +48,7 @@ namespace Game
         {
             _animationTimer.Tick += (sender, args) =>
             {
-                var result = _model.NextTick(_currentDirection, _time, _xPressed);
+                var result = _model.NextTick(_currentKeys, _currentDirection, _time, _xPressed);
                 if (!result)
                     Lose();
             };
@@ -78,9 +81,12 @@ namespace Game
                 if (args.KeyData == Keys.X)
                     _xPressed = false;
             };
+            KeyDown += (sender, args) => _currentKeys.Add(args.KeyData);
             KeyDown += (sender, args) => { _currentDirection = ChooseDirection(args); };
             KeyUp += (sender, args) =>
             {
+                if (_currentKeys.Contains(args.KeyData))
+                    _currentKeys.Remove(args.KeyData);
                 if (ChooseDirection(args) == _currentDirection)
                     _currentDirection = MoveDirections.None;
             };
@@ -130,6 +136,7 @@ namespace Game
             _model = new GameModel();
             _time = 0;
             _currentDirection = MoveDirections.None;
+            _currentKeys.Clear();
             UnpauseGame();
             BackColor = Color.MidnightBlue;
             SetAnimators();

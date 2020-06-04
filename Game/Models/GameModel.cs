@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
+using System.Windows.Forms;
 using Game.Enums;
 using Game.ModelEvents;
 
@@ -46,22 +49,22 @@ namespace Game.Models
 
         #region mainActions
 
-        public bool NextTick(MoveDirections currentDirection, ulong time, bool bulletFlag)
+        public bool NextTick(IEnumerable<Keys> keys, MoveDirections currentDirection, ulong time, bool bulletFlag)
         {
             NextTimeTick(time);
             CreateBullet(bulletFlag);
-            MoveObjects(currentDirection);
+            MoveObjects(keys, currentDirection);
             return Player.IsAlive();
         }
 
-        private void MoveObjects(MoveDirections currentDirection)
+        private void MoveObjects(IEnumerable<Keys> keys, MoveDirections currentDirection)
         {
             MoveBullet();
             MoveBonus();
             MoveRocket();
             MoveBarriers();
             MoveAmmoBox();
-            MovePlayer(currentDirection);
+            MovePlayer(keys);
             MoveEnemy(currentDirection);
         }
 
@@ -86,18 +89,39 @@ namespace Game.Models
             GameBonus.CalculateSpeed(time);
         }
 
-        private void MovePlayer(MoveDirections direction)
+        private void MovePlayer(IEnumerable<Keys> keys)
         {
             CheckBarriersCollisions();
             CheckRocketCollision();
             CheckBonusCollision();
             CheckAmmoBoxCollision();
-            if ((Player.X - Player.Speed < 0 && direction == MoveDirections.Left)
-                || (Player.X + Player.Speed >= Width - Player.Width && direction == MoveDirections.Right)
-                || (Player.Y - Player.Speed < 0 && direction == MoveDirections.Up)
-                || (Player.Y + Player.Speed >= Height - Player.Height) && direction == MoveDirections.Down)
-                return;
-            Player.Move(direction);
+            foreach (var key in keys)
+            {
+                var direction = ChoseDirection(key);
+                if ((Player.X - Player.Speed < 0 && direction == MoveDirections.Left)
+                    || (Player.X + Player.Speed >= Width - Player.Width && direction == MoveDirections.Right)
+                    || (Player.Y - Player.Speed < 0 && direction == MoveDirections.Up)
+                    || (Player.Y + Player.Speed >= Height - Player.Height) && direction == MoveDirections.Down)
+                    return;
+                Player.Move(direction);
+            }
+        }
+
+        private MoveDirections ChoseDirection(Keys key)
+        {
+            switch (key)
+            {
+                case(Keys.Left):
+                    return MoveDirections.Left;
+                case(Keys.Right):
+                    return MoveDirections.Right;
+                case(Keys.Up):
+                    return MoveDirections.Up;
+                case(Keys.Down):
+                    return MoveDirections.Down;
+                default:
+                    return MoveDirections.None;
+            }
         }
         
         #endregion
